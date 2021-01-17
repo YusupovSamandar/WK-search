@@ -1,0 +1,233 @@
+.container p {
+    color: red;
+    text-align: center;
+}
+
+.drop-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    height: 400px;
+    border: 2px dashed #6c757d;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+.upload-icon {
+    width: 60px;
+    height: 60px;
+    background: url(https://cdn2.iconfinder.com/data/icons/font-awesome/1792/upload-512.png) no-repeat center;
+    background-size: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.drop-message {
+    text-align: center;
+    color: #6c757d;
+    font-size: 25px;
+}
+
+.file-display-container {
+    border-radius: 10px;
+    margin-top: 560px;
+    position: fixed;
+    width: 650px;
+    background-color: white;
+    margin-top: 550px;
+
+}
+
+.file-status-bar {
+    margin-bottom: 20px;
+    width: 100%;
+    vertical-align: top;
+    margin-top: 10px;
+    position: relative;
+    line-height: 50px;
+    height: 50px;
+}
+
+.file-status-bar>div {
+    overflow: hidden;
+}
+
+.file-type {
+    display: inline-block !important;
+    position: absolute;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 13px;
+    margin-top: 25px;
+    padding: 0 4px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px #abc;
+    color: #fff;
+    background: #0080c8;
+    text-transform: uppercase;
+}
+
+.file-name {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+    color: #4aa1f3;
+}
+
+.file-error {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+    color: #9aa9bb;
+}
+
+.file-error-message {
+    color: red;
+}
+
+.file-type-logo {
+    width: 50px;
+    height: 50px;
+    background: url(https://github.com/uzochukwueddie/react-dropzone/blob/master/src/images/generic.png) no-repeat center center;
+    background-size: 100%;
+    position: absolute;
+}
+
+.file-size {
+    display: inline-block;
+    vertical-align: top;
+    color: #30693D;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 10px;
+    color: #444242;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.file-remove {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    line-height: 15px;
+    cursor: pointer;
+    color: red;
+    margin-right: -10px;
+}
+
+
+.file-error-message {
+
+    cursor: pointer;
+    color: red;
+}
+
+.close {
+    cursor: pointer;
+    margin-bottom: 10000px;
+}
+
+.file-type-logo {
+    width: 50px;
+    height: 50px;
+    background: url(https://raw.githubusercontent.com/uzochukwueddie/react-dropzone/master/src/images/generic.png) no-repeat center center;
+    background-size: 100%;
+    position: absolute;
+}
+
+.file-size {
+    display: inline-block;
+    vertical-align: top;
+    color: #30693D;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 10px;
+    color: #444242;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.file-remove {
+    position: absolute;
+    line-height: 15px;
+    cursor: pointer;
+    color: red;
+    margin-right: -10px;
+}
+
+.file-upload-btn {
+    color: white;
+    position: relative;
+    bottom: 59px;
+    left: 310px;
+    background-color: #4aa1f3;
+    font-size: 18px !important;
+    padding: 8px 15px;
+    margin-bottom: 5px;
+}
+
+.file-input {
+    display: none;
+}
+
+.upload-modal {
+    z-index: 999;
+    display: none;
+    overflow: hidden;
+}
+
+.upload-modal .overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .66);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.progress-container {
+    background: white;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.progress-container span {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.progress {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #efefef;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    position: absolute;
+    background-color: #4aa1f3;
+    height: 20px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}
