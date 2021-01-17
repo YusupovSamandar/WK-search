@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import "../assets/css/dropzone.css"
 import axios from 'axios';
+import { UploadContext } from "./../../UserContextProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
 const DropZone = () => {
@@ -12,6 +13,7 @@ const DropZone = () => {
     const uploadModalRef = useRef();
     const uploadRef = useRef();
     const progressRef = useRef();
+    const [isUploaded, setIsUploaded] = useContext(UploadContext);
     const dragOver = (e) => {
         e.preventDefault();
     }
@@ -102,39 +104,45 @@ const DropZone = () => {
         }
     }
     const uploadFiles = () => {
-        uploadModalRef.current.style.display = 'block';
-        uploadRef.current.innerHTML = 'File(s) Uploading...';
-        for (let i = 0; i < validFiles.length; i++) {
-            const formData = new FormData();
-            formData.append('image', validFiles[i]);
-            formData.append('key', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-            axios.post('/api/upload', formData, {
-                onUploadProgress: (progressEvent) => {
-                    const uploadPercentage = Math.floor((progressEvent.loaded / progressEvent.total) * 100);
-                    progressRef.current.innerHTML = `${uploadPercentage}%`;
-                    progressRef.current.style.width = `${uploadPercentage}%`;
-                    if (uploadPercentage === 100) {
-                        uploadRef.current.innerHTML = 'File(s) Uploaded';
-                        validFiles.length = 0;
-                        setValidFiles([...validFiles]);
-                        setSelectedFiles([...validFiles]);
-                        setUnsupportedFiles([...validFiles]);
+        if (isUploaded) {
+            uploadModalRef.current.style.display = 'block';
+            uploadRef.current.innerHTML = 'File(s) Uploading...';
+            for (let i = 0; i < validFiles.length; i++) {
+                const formData = new FormData();
+                formData.append('image', validFiles[i]);
+                formData.append('key', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+                axios.post('http://localhost:3000/files', formData, {
+                    onUploadProgress: (progressEvent) => {
+                        const uploadPercentage = Math.floor((progressEvent.loaded / progressEvent.total) * 100);
+                        progressRef.current.innerHTML = `${uploadPercentage}%`;
+                        progressRef.current.style.width = `${uploadPercentage}%`;
+                        if (uploadPercentage === 100) {
+                            uploadRef.current.innerHTML = 'File(s) Uploaded';
+                            validFiles.length = 0;
+                            setValidFiles([...validFiles]);
+                            setSelectedFiles([...validFiles]);
+                            setUnsupportedFiles([...validFiles]);
+                        }
                     }
-                }
-            })
-                .catch(() => {
-                    uploadRef.current.innerHTML = `<span class="error">Error Uploading File(s)</span>`;
-                    progressRef.current.style.backgroundColor = 'red';
-                });
+                })
+                    .catch(() => {
+                        uploadRef.current.innerHTML = `<span class="error">Error Uploading File(s)</span>`;
+                        progressRef.current.style.backgroundColor = 'red';
+                    });
+            }
+        } else {
+            setIsUploaded(prev => !prev);
         }
+
     }
     const closeUploadModal = () => {
         uploadModalRef.current.style.display = 'none';
     }
     return (
         <>
-            <div className="container" >
-                {unsupportedFiles.length === 0 && validFiles.length ? <button className="file-upload-btn btn  btn-primary" onClick={() => uploadFiles()}><FontAwesomeIcon icon={faUpload} /> Upload Files </button> : ''}
+            <button className="file-upload-btn btn  btn-primary" onClick={() => uploadFiles()}><FontAwesomeIcon icon={faUpload} /> Upload Video </button>
+            {isUploaded ? <div className="container" >
+                {/* {unsupportedFiles.length === 0 && validFiles.length ? <button className="file-upload-btn btn  btn-primary" onClick={() => uploadFiles()}><FontAwesomeIcon icon={faUpload} /> Upload Video </button> : ''} */}
                 {unsupportedFiles.length ? <p>Please remove all unsupported files.</p> : ''}
 
                 <div className="drop-container"
@@ -185,7 +193,7 @@ const DropZone = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> : <h3>Click above to upload video ↑</h3>}
         </>
     )
 }

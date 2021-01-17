@@ -1,7 +1,18 @@
-import React, { Component } from "react"
+import React, { Component } from "react";
 
 
 const UserContext = React.createContext()
+
+export const UploadContext = React.createContext();
+
+export function UploadContextProvider(props) {
+    const [isUploaded, setIsUploaded] = React.useState(false);
+    return (
+        <UploadContext.Provider value={[isUploaded, setIsUploaded]}>
+            {props.children}
+        </UploadContext.Provider>
+    );
+}
 
 class UserContextProvider extends Component {
     constructor(props) {
@@ -14,7 +25,7 @@ class UserContextProvider extends Component {
         this.setAuthData = this.setAuthData.bind(this)
     }
 
-    setAuthData(isAuthed, login='') {
+    setAuthData(isAuthed, login = '') {
         if (isAuthed) {
             this.setState({
                 isAuthed: true,
@@ -31,7 +42,7 @@ class UserContextProvider extends Component {
     render() {
         return (
             <UserContext.Provider
-                value={ {login: this.state.login, isAuthed: this.state.isAuthed, setAuthData: this.setAuthData} }
+                value={{ login: this.state.login, isAuthed: this.state.isAuthed, setAuthData: this.setAuthData }}
             >
                 {this.props.children}
             </UserContext.Provider>
