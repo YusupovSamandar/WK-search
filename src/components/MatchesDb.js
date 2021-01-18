@@ -48,15 +48,15 @@ export class MatchesDb extends Component {
 
         return (
             <div>
-                <MatchesWhiteCard collections={ this.state.collections } targets={ this.state.targets } />
+                <MatchesWhiteCard collections={this.state.collections} targets={this.state.targets} />
                 <Container>
                     <h4 className="text-break"><strong>NBCU</strong><br /></h4>
                     <h5 className="pt-2"><strong>Dailymotion </strong><br /></h5>
                     <div className="row pb-2">
-                        <div className="col"><span style={ matchesInfoStyle }>Matches: 34<br /></span></div>
-                        <div className="col"><span style={ matchesInfoStyle }>Views: 6,567,456<br /></span></div>
+                        <div className="col"><span style={matchesInfoStyle}>Matches: 534<br /></span></div>
+                        <div className="col"><span style={matchesInfoStyle}>Views: 6,567,456<br /></span></div>
                     </div>
-                    <MatchesTable headers={ headers } rows={ rows } />
+                    <MatchesTable headers={headers} rows={rows} />
                 </Container>
             </div>
         )
