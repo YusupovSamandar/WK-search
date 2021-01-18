@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-import { SearchTool } from './SearchTool'
+import Searchfilter from './searchFilter'
 
 
 const container = {
@@ -43,19 +43,18 @@ export class MatchesWhiteCard extends Component {
 
     render() {
         return (
-            <div className="container" style={ container }>
+            <div className="container" style={container}>
                 <div className="row">
                     <div className="col">
-                        <p style= { searchString } >
-                            <FontAwesomeIcon icon={ faSearch } /> Search filters: <span className="text-secondary">5 Titles, NBCU | Dailymotion, VK<br /></span>
-                        </p>
-                        <button onClick={ this.collapseSearchTool } className="btn btn-primary btn-sm d-none" type="button" style={ hideButton }>
-                            <FontAwesomeIcon icon={ this.state.isCollapsed ? faChevronDown : faChevronUp } className="d-table-row d-xl-flex" />
+
+                        <button onClick={this.collapseSearchTool} className="btn btn-primary btn-sm d-none" type="button" style={hideButton}>
+                            <FontAwesomeIcon icon={this.state.isCollapsed ? faChevronDown : faChevronUp} className="d-table-row d-xl-flex" />
                         </button>
                     </div>
                 </div>
                 <div className="collapse show" id="collapse-1" ref="collapse-1">
-                    <SearchTool collections={ this.props.collections } targets={ this.props.targets }/>
+                    <Searchfilter />
+
                 </div>
             </div>
         )

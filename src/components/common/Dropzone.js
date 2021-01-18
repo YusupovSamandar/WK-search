@@ -4,6 +4,15 @@ import axios from 'axios';
 import { UploadContext } from "./../../UserContextProvider";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import { Container } from "./Container"
+import { WhiteCard } from "./WhiteCard"
+const searchDate = new Date(2020, 11, 16, 23, 45)
+const targetDict = {
+    VK: 801283,
+    Dailymotion: 57924,
+    Vimeo: 895675
+}
+
 const DropZone = () => {
     const [validFiles, setValidFiles] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
@@ -193,7 +202,13 @@ const DropZone = () => {
                         </div>
                     </div>
                 </div>
-            </div> : <h3>Click above to upload video ↑</h3>}
+            </div> : <WhiteCard
+                    date={searchDate}
+                    title={'NBCU'}
+                    status={'Complete'}
+                    titlesCount={634674}
+                    targets={targetDict}
+                />}
         </>
     )
 }

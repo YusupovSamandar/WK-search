@@ -7,7 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 
 const Uploads = () => {
-    console.log('it works');
+
     const [doesFileExist, setDoesFileExist] = useState(false);
 
     // useEffect(() => {
@@ -25,8 +25,8 @@ const Uploads = () => {
 
             <Container>
                 <div className="container">
-                    <p className="title">Welcome to your own search request tool
-                    There is no search request yet
+                    <p className="title">Welcome to your own search request tool<br />
+                    There is no search request yet<br />
                     Let's create your first step in WK Search </p>
                     <div className='row' >
                         <button className="btn  upload btn-primary " disabled={doesFileExist} type="button"><FontAwesomeIcon icon={faSearch} /> Search Matches</button>
