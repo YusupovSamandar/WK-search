@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack --watch --mode development --hot serve --config webpack.config.server.js",
     "dev": "webpack --mode development ./src/index.js",
-    "build": "webpack --mode production ./src/index.js"
+    "build": "webpack --mode production ./src/index.js",
+    "db": "json-server --watch db.json"
   },
   "repository": {
     "type": "git",
